@@ -1,6 +1,5 @@
 import {Navbar, NavbarBrand, Nav, NavLink} from "reactstrap";
 
-
 const UtilitiesNavBar: React.FC = () => {
   return (
     <Navbar color="dark" dark expand="md">

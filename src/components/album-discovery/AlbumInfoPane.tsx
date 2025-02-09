@@ -1,7 +1,6 @@
 import {Fragment} from "react/jsx-runtime";
 
-const AlbumInfoPane = () => {
-
+const AlbumInfoPane: React.FC = () => {
   return (
     <Fragment>
       <div>

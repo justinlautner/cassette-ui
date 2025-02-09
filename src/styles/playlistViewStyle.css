@@ -1,32 +1,45 @@
-table-view    {
-   background-color: transparent;
-   border-color: transparent;
+table {
+  background-color: transparent;
+  border-color: transparent;
+  width: 100%;
+  border-collapse: collapse;
 }
-table-view column-header,
-table-view column-header-background filler {
-    background-color: #2c2c2c;
-}
-table-row-cell:odd {
-    background-color: #2c2c2c;
-    opacity: 075;
-}
-table-row-cell:even {
-    background-color: #454545;
-    opacity: 075;
-}
-column-header label {
-    color: white;
-    opacity: 075;
-}
-table-column {
-  text-align: CENTER;
+
+table th,
+table th::before {
+  background-color: #2c2c2c;
   color: white;
+  text-align: center;
+  padding: 8px;
 }
-table-row-cell:selected {
-   background-color: #7a330d;
-   color:  #6622CC;
-   border-color: #7a330d;
+
+table th::before {
+  content: attr(data-header);
 }
-table-row-cell:empty:odd, table-row-cell:empty:even {
-    background-color: transparent;
+
+table tr:nth-child(odd) {
+  background-color: #2c2c2c;
+  opacity: 0.75;
+}
+
+table tr:nth-child(even) {
+  background-color: #454545;
+  opacity: 0.75;
+}
+
+table td {
+  text-align: center;
+  color: white;
+  padding: 8px;
+}
+
+table tr.isSelected {
+  background-color: #7a330d;
+  color: #6622CC;
+  border-color: #7a330d;
+}
+
+table tr:empty:nth-child(odd),
+table tr:empty:nth-child(even) {
+  background-color: transparent;
 }

@@ -1,4 +1,4 @@
-interface Song {
+export interface Song {
     filePath: string;
     track: number;
     title: string;
@@ -12,17 +12,17 @@ interface Song {
     numberOfSongs: number;
 }
 
-interface Album {
-    album: Song[];
-    numberOfAlbums: number;
-}
+// interface Album {
+//     album: Song[];
+//     numberOfAlbums: number;
+// }
 
-interface Playlist {
-    songs: Song[];
-    playlistCounter: number;
-}
+// interface Playlist {
+//     songs: Song[];
+//     playlistCounter: number;
+// }
 
-interface PlaylistSongDisplay {
+export interface PlaylistSongDisplay {
     track: number;
     title: string;
     length: string;
@@ -34,8 +34,13 @@ interface PlaylistSongDisplay {
     fileType: string;
 }
 
-interface SongDisplay {
-    track: number;
-    title: string;
-    length: string;
+// interface SongDisplay {
+//     track: number;
+//     title: string;
+//     length: string;
+// }
+
+export enum MusicDisplayType {
+    PLAYLIST = 'playlist',
+    ALBUMS = 'albums',
 }

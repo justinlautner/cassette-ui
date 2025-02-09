@@ -2,8 +2,7 @@ import {useState} from "react";
 import {Button} from "reactstrap";
 import AlbumInfoPane from "./AlbumInfoPane";
 
-
-const AlbumDiscoveryPane = () => {
+const AlbumDiscoveryPane: React.FC = () => {
   const [showAlbumInfo, setShowAlbumInfo] = useState<boolean>(false);
   return (
     <div>

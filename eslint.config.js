@@ -26,6 +26,8 @@ export default tseslint.config(
       'indent': ['error', 2], // Enforce 2-space indentation
       'object-curly-spacing': ['error', 'never'], // Enforce spacing inside import/export braces
       'eol-last': ['error', 'always'], // Enforce newline at the end of files
+      'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1, maxBOF: 0 }], // Disallow multiple empty lines
+      '@typescript-eslint/explicit-function-return-type': ['error'], // Require explicit return types on functions and class methods
     },
   },
 )
