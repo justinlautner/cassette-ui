@@ -1,0 +1,24 @@
+table-view {
+    border-color: transparent;
+    background: none;
+    padding: 1;
+}
+column-header-background {
+    visibility: hidden; padding: -1em;
+}
+table-column {
+  text-align: center;
+  color: white;
+}
+table-view *.increment-button,
+table-view *.decrement-button,
+table-view *.increment-arrow,
+table-view *.decrement-arrow
+{
+    padding: 0;
+}
+/*.table-row-cell:selected {
+   background-color: #7a330d;
+   text-background-color:  #6622CC; //This changed text color in selected rows... How to edit programmatically?
+   table-cell-border-color: #7a330d;
+}*/
