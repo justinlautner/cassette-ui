@@ -17,6 +17,10 @@ table-view *.decrement-arrow
 {
     padding: 0;
 }
+.album-cover {
+    width: 150px;
+    height: 150px;
+}
 /*.table-row-cell:selected {
    background-color: #7a330d;
    text-background-color:  #6622CC; //This changed text color in selected rows... How to edit programmatically?

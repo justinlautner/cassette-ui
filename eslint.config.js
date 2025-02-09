@@ -23,6 +23,9 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      'indent': ['error', 2], // Enforce 2-space indentation
+      'object-curly-spacing': ['error', 'never'], // Enforce spacing inside import/export braces
+      'eol-last': ['error', 'always'], // Enforce newline at the end of files
     },
   },
 )

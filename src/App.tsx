@@ -1,15 +1,16 @@
-import React from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Container } from 'reactstrap';
-import MusicControlBar from './components/MusicControlBar';
-import UtilitiesNavBar from './components/UtilitiesNavBar';
+import React, { Fragment } from 'react';
+import MusicControlBar from './components/main-controls/MusicControlBar';
+import UtilitiesNavBar from './components/main-controls/UtilitiesNavBar';
+import AlbumDiscoveryPane from './components/album-discovery/AlbumDiscoveryPane';
 
 const App: React.FC = () => {
 
   return (
-    <Container>
+    <Fragment>
       <UtilitiesNavBar/>
+      <AlbumDiscoveryPane/>
       <MusicControlBar/>
-    </Container>
+    </Fragment>
   );
 };
 
