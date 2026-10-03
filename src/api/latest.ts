@@ -3,11 +3,35 @@ const AUTHORIZATION = process.env.EXPO_PUBLIC_AUTHORIZATION;
 const USER_ID = process.env.EXPO_PUBLIC_USER_ID;
 
 export interface LatestItem {
+  Name: string;
+  ServerId: string;
   Id: string;
-  Name?: string;
-  ImageTags?: {
-    Primary?: string;
+  PremiereDate: string;
+  ChannelId: string | null;
+  RunTimeTicks: number;
+  ProductionYear: number;
+  IsFolder: boolean;
+  Type: 'MusicAlbum';
+  UserData: {
+    PlaybackPositionTicks: number;
+    PlayCount: number;
+    IsFavorite: boolean;
+    [key: string]: unknown;
   };
+  ChildCount: number;
+  PrimaryImageAspectRatio: number;
+  Artists: string[];
+  ArtistItems: Record<string, unknown>[];
+  AlbumArtist: string;
+  AlbumArtists: Record<string, unknown>[];
+  ImageTags: {
+    Primary: string;
+  };
+  ImageBlurHashes: {
+    Primary: Record<string, unknown>;
+  };
+  LocationType: string;
+  MediaType: string;
 }
 
 export async function fetchLatest(): Promise<LatestItem[]> {

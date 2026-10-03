@@ -9,7 +9,7 @@ export function fetchItemImage(id: string, tag: string): ImageSourcePropType {
   }
 
   return {
-    uri: `${API_URL}/Items/${id}/Images/Primary?fillHeight=440&fillWidth=440&quality=96&tag=${tag}`,
+    uri: `${API_URL}/Items/${id}/Images/Primary?fillHeight=500&fillWidth=500&quality=96&tag=${tag}`,
     headers: {
         Authorization: `${AUTHORIZATION}`,
         Accept: 'image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5',

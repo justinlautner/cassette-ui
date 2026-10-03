@@ -1,47 +1,59 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
-import { fetchLatest } from './api/latest';
-import { fetchItemImage } from './api/itemImage';
+import { StyleSheet, View } from 'react-native';
+import RecentlyAddedAlbums from './components/recently-added/RecentlyAddedAlbums';
+import { NavigationContainer } from '@react-navigation/native';
+import AlbumView from './components/album-view/AlbumView';
+import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { LatestItem } from './api/latest';
+
+type RootStackParamList = {
+  RecentlyAdded: undefined;
+  Album: { item: LatestItem };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+type RecentlyAddedScreenProps =
+  NativeStackScreenProps<RootStackParamList, 'RecentlyAdded'>;
+
+function RecentlyAddedScreen({ navigation }: RecentlyAddedScreenProps) {
+  return (
+    <RecentlyAddedAlbums
+      onSelectAlbum={(item) => navigation.navigate('Album', { item })}
+    />
+  );
+}
+
+type AlbumScreenProps = NativeStackScreenProps<RootStackParamList, 'Album'>;
+
+function AlbumScreen({ route }: AlbumScreenProps) {
+  return <AlbumView item={route.params.item} />;
+}
 
 export default function App() {
-  const {data: latest = [], isPending, error} = useQuery({
-    queryKey: ['latest'],
-    queryFn: fetchLatest,
-  });
-
-  if (isPending) {
-    return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
-
-  if (error) {
-    return (
-      <View style={styles.container}>
-        <Text>Error: {error instanceof Error ? error.message : 'Unknown error'}</Text>
-        <StatusBar style="auto" />
-      </View>
-    );
-  }
-  const firstItem = latest[0];
-  const imageTag = firstItem?.ImageTags?.Primary;
-
   return (
     <View style={styles.container}>
-      {firstItem && imageTag ? (
-        <Image
-          source={fetchItemImage(firstItem.Id, imageTag)}
-          style={{ width: 342, height: 342 }}
-          resizeMode="cover"
-        />
-      ) : (
-        <Text>No primary image available</Text>
-      )}
-      <StatusBar style="auto" />
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              contentStyle: styles.screen,
+              headerStyle: styles.header,
+              headerTintColor: '#E4E4E7',
+              headerShadowVisible: false,
+            }}
+          >
+            <Stack.Screen
+              name="RecentlyAdded"
+              component={RecentlyAddedScreen}
+              options={{ title: 'Recently Added' }}
+            />
+            <Stack.Screen
+              name="Album"
+              component={AlbumScreen}
+              options={{ title: 'Album' }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
     </View>
   );
 }
@@ -49,8 +61,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff3',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#121212',
+    padding: 16,
+    width: '100%',
+  },
+  screen: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: '#121212',
+  },
+  header: {
+    backgroundColor: '#121212',
   },
 });
